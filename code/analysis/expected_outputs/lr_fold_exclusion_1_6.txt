@@ -1,0 +1,17 @@
+LEVEL 1, excluded paper folds [1, 6] folds/participant 8
+  PCC   linear      sys 0.676 tem 0.726 d -0.050 n 5/10 p 0.3750 pH 1.000
+  PCC   neuroincept sys 0.559 tem 0.726 d -0.167 n 4/10 p 0.1602 pH 1.000
+  PCC   convedsr    sys 0.626 tem 0.726 d -0.100 n 4/10 p 0.1055 pH 0.949
+  PCC   baseline    sys 0.755 tem 0.726 d +0.029 n 6/10 p 0.4316 pH 1.000
+  PCC   hybrid      sys 0.752 tem 0.726 d +0.027 n 6/10 p 0.4316 pH 1.000
+  inPCC linear      sys 0.249 tem 0.216 d +0.033 n 6/10 p 0.3223 pH 1.000
+  inPCC neuroincept sys 0.188 tem 0.216 d -0.028 n 4/10 p 0.5566 pH 1.000
+  inPCC convedsr    sys 0.196 tem 0.216 d -0.020 n 4/10 p 0.4922 pH 1.000
+  inPCC baseline    sys 0.267 tem 0.216 d +0.051 n 7/10 p 0.1055 pH 0.949
+  inPCC hybrid      sys 0.298 tem 0.216 d +0.082 n 7/10 p 0.0371 pH 0.371
+LEVEL 2 words 789 {'MR-CNN-BiLSTM': 0.388, 'CNN-BiLSTM': 0.361, 'Linear': 0.332, 'NeuroIncept': 0.253, 'ConvED-SR': 0.257, 'Timing template': 0.293}
+  vs CNN-BiLSTM  d +0.028 n 9/10 p 0.0039 pH 0.0078
+  vs Linear      d +0.056 n 9/10 p 0.0039 pH 0.0078
+  vs NeuroIncept d +0.136 n 10/10 p 0.0020 pH 0.0078
+  vs ConvED-SR   d +0.132 n 10/10 p 0.0020 pH 0.0078
+  vs template d +0.096 n 9/10 (descriptive)
