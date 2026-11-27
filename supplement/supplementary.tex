@@ -1,0 +1,347 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}\usepackage{booktabs,float,amsmath,graphicx,array}\usepackage[T1]{fontenc}\usepackage[hidelinks]{hyperref}\input{numbers.tex}
+\setlength{\tabcolsep}{4pt}\renewcommand{\thetable}{S\arabic{table}}\renewcommand{\thefigure}{S\arabic{figure}}
+\title{Supplementary Material\\[2pt]\large sEEG-to-Speech Decoding Beyond Task Timing: A Two-Level Benchmark}
+\author{}\date{}
+\sloppy\begin{document}\maketitle
+\noindent All numbers are computed from the result files released with the code. One model is trained per participant, fold (10 contiguous folds) and seed (42, 123 and 456). Unless stated otherwise, a participant value is the mean over the ten folds (level~1) or over the kept words (level~2) of one seed, averaged over the three seeds; Linear and the template are deterministic. Folds are numbered as in the paper (1--10). The systems are named as in the paper: Linear, NeuroIncept and ConvED-SR (our re-implementations based on the authors' public code), the CNN-BiLSTM and the MR-CNN-BiLSTM (the CNN-BiLSTM with multi-receptive residual blocks). Level~1 is the whole spectrogram, level~2 the speech frames of each word. At level~1, in-speech PCC means the block-level in-speech PCC (computed over the speech frames of each test block); at level~2, it means the word-level in-speech PCC (main text, Section~II-F). Participant identifiers sub-01 to sub-10 are those of the dataset; sub-XX is participant XX of the main text.\par
+\smallskip\noindent\textbf{Contents.} S1 seeds; S2 template cap, speech threshold and shift control; S3 bootstrap intervals and channel counts; S4 reproducibility; S5 ConvED-SR input resolution; S6 comparators: details and deviations; S7 architectures (Fig.~S1); S8 audio metrics: constant-spectrum checks and MCD; S9 CNN-BiLSTM versus MR-CNN-BiLSTM; S10 participants; S11 additional figures; S12 audio metrics per system; S13 level~2, computational details; S14 level~2, words and per-participant values; S15 level~2, each seed; S16 earlier studies on the dataset (Table~S13, full version of main Table~I).\par
+
+\section*{S1. Three seeds}
+Each neural network was trained with three seeds (42, 123 and 456), which change the initial weights and the order of the training windows. Table~\ref{tab:s_seeds} gives the mean over the ten participants for each seed, and the mean $\pm$ SD over the three seeds.
+
+\begin{table}[H]\centering\small
+\caption{Level~1, mean over participants; mean $\pm$ SD over seeds 42, 123, 456. Last column: PCC of each seed (42 / 123 / 456).}\label{tab:s_seeds}
+\begin{tabular}{lcccc}
+\toprule
+System & PCC & In-speech PCC & Residual PCC & PCC per seed \\
+\midrule
+MR-CNN-BiLSTM & \NSHybPccM{} $\pm$ \NSHybPccS & \NSHybInsM{} $\pm$ \NSHybInsS & \NSHybResM{} $\pm$ \NSHybResS & \NSHybPccSdA{} / \NSHybPccSdB{} / \NSHybPccSdC \\
+CNN-BiLSTM & \NSBasPccM{} $\pm$ \NSBasPccS & \NSBasInsM{} $\pm$ \NSBasInsS & \NSBasResM{} $\pm$ \NSBasResS & \NSBasPccSdA{} / \NSBasPccSdB{} / \NSBasPccSdC \\
+NeuroIncept & \NSNeuPccM{} $\pm$ \NSNeuPccS & \NSNeuInsM{} $\pm$ \NSNeuInsS & \NSNeuResM{} $\pm$ \NSNeuResS & \NSNeuPccSdA{} / \NSNeuPccSdB{} / \NSNeuPccSdC \\
+ConvED-SR & \NSConPccM{} $\pm$ \NSConPccS & \NSConInsM{} $\pm$ \NSConInsS & \NSConResM{} $\pm$ \NSConResS & \NSConPccSdA{} / \NSConPccSdB{} / \NSConPccSdC \\
+Linear (deterministic) & \NBLinPcc & \NBLinIns & \NBLinRes & \NBLinPcc{} (all seeds) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:s_seeds_w} compares the MR-CNN-BiLSTM with each comparator at level~1 on the participant values averaged over the three seeds (exact two-sided Wilcoxon signed-rank test, ten pairs, Holm correction over the 12 tests).
+
+\begin{table}[H]\centering\small
+\caption{Level~1, MR-CNN-BiLSTM minus comparator, participant values averaged over the three seeds.}\label{tab:s_seeds_w}
+\begin{tabular}{llrccc}
+\toprule
+Comparator & Metric & Mean diff. & MR-CNN-BiLSTM $>$ & exact $p$ & Holm $p$ \\
+\midrule
+Linear & PCC & \NBHLinPccD & \NBHLinPccWin/10 & \NBHLinPccP & \NBHLinPccHolm \\
+Linear & In-speech PCC & \NBHLinInsD & \NBHLinInsWin/10 & \NBHLinInsP & \NBHLinInsHolm \\
+Linear & Residual PCC & \NBHLinResD & \NBHLinResWin/10 & \NBHLinResP & \NBHLinResHolm \\
+CNN-BiLSTM & PCC & \NBHBasPccD & \NBHBasPccWin/10 & \NBHBasPccP & \NBHBasPccHolm \\
+CNN-BiLSTM & In-speech PCC & \NBHBasInsD & \NBHBasInsWin/10 & \NBHBasInsP & \NBHBasInsHolm \\
+CNN-BiLSTM & Residual PCC & \NBHBasResD & \NBHBasResWin/10 & \NBHBasResP & \NBHBasResHolm \\
+NeuroIncept & PCC & \NBHNeuPccD & \NBHNeuPccWin/10 & \NBHNeuPccP & \NBHNeuPccHolm \\
+NeuroIncept & In-speech PCC & \NBHNeuInsD & \NBHNeuInsWin/10 & \NBHNeuInsP & \NBHNeuInsHolm \\
+NeuroIncept & Residual PCC & \NBHNeuResD & \NBHNeuResWin/10 & \NBHNeuResP & \NBHNeuResHolm \\
+ConvED-SR & PCC & \NBHConPccD & \NBHConPccWin/10 & \NBHConPccP & \NBHConPccHolm \\
+ConvED-SR & In-speech PCC & \NBHConInsD & \NBHConInsWin/10 & \NBHConInsP & \NBHConInsHolm \\
+ConvED-SR & Residual PCC & \NBHConResD & \NBHConResWin/10 & \NBHConResP & \NBHConResHolm \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{0.95\linewidth}{\footnotesize Linear is deterministic and enters with its single run. The same test on each seed separately gives the same pattern: the comparisons with Linear, NeuroIncept and ConvED-SR and the in-speech comparison with the CNN-BiLSTM have a Holm $p$ of at most \NBHSigMaxHolmSeeds{} in every seed, and the PCC and residual PCC comparisons with the CNN-BiLSTM have a Holm $p$ of at least \NBHBasNsMinHolmSeeds{} in every seed.}
+\end{table}
+
+\section*{S2. Template and shift controls}
+
+\textbf{Template and speech-mask sensitivity.} The template caps the time since the last word onset at 300 frames, and the speech mask is an Otsu threshold. Changing the cap to 150 or 600 frames, or the threshold by $\pm0.25$ SD, was re-scored on the saved seed-42 predictions (no retraining; Table~\ref{tab:s_tmpl}). The template rows of the cap variants are those of main Table~IV.
+
+\begin{table}[H]\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{In-speech PCC of the systems under different template caps and speech thresholds (seed 42, mean over participants).}\label{tab:s_tmpl}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Variant & CNN-BiLSTM & ConvED-SR & MR-CNN-BiLSTM & Linear & NeuroIncept & Template & Speech frac. \\
+\midrule
+main (cap 300, Otsu) & \NSensABas & \NSensACon & \NSensAHyb & \NSensALin & \NSensANeu & \NSensATem & \NSensAFrac \\
+cap 150 & \NSensBBas & \NSensBCon & \NSensBHyb & \NSensBLin & \NSensBNeu & \NSensBTem & \NSensBFrac \\
+cap 600 & \NSensCBas & \NSensCCon & \NSensCHyb & \NSensCLin & \NSensCNeu & \NSensCTem & \NSensCFrac \\
+Otsu $-$ 0.25 SD & \NSensDBas & \NSensDCon & \NSensDHyb & \NSensDLin & \NSensDNeu & \NSensDTem & \NSensDFrac \\
+Otsu + 0.25 SD & \NSensEBas & \NSensECon & \NSensEHyb & \NSensELin & \NSensENeu & \NSensETem & \NSensEFrac \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{0.95\linewidth}{\footnotesize The overall PCC of the decoders does not depend on the speech threshold or the cap. The residual PCC of every system changes by at most \NSensResMaxChange. The ordering of the systems is the same in every variant.}
+\end{table}
+
+\textbf{Shifted-target control.} This control differs from the chance level of the dataset authors, who correlate the spectrogram with circularly shifted copies of itself and use no decoder. Here the target spectrogram was circularly shifted against the neural features (12 shifts per participant, from 12\,000 frames upward in steps of 22 frames) and the linear decoder was retrained with the same 10-fold protocol. Of the \NRShiftN{} shifted runs, \NRShiftPos{} have a PCC above 0 (range \NRShiftMin{} to \NRShiftMax{}, mean \NRShiftMean{}; Table~\ref{tab:s_shift}).
+
+\begin{table}[H]\centering\small
+\caption{Linear decoder with circularly shifted targets: PCC over the 12 shifts, per participant.}\label{tab:s_shift}
+\begin{tabular}{lrrrr}
+\toprule
+Participant & Min & Mean & Max & Shifts $>0$ \\
+\midrule
+sub-01 & 0.122 & 0.165 & 0.235 & 12/12 \\
+sub-02 & 0.217 & 0.295 & 0.396 & 12/12 \\
+sub-03 & 0.228 & 0.277 & 0.321 & 12/12 \\
+sub-04 & 0.230 & 0.328 & 0.448 & 12/12 \\
+sub-05 & 0.061 & 0.160 & 0.253 & 12/12 \\
+sub-06 & 0.329 & 0.399 & 0.474 & 12/12 \\
+sub-07 & 0.107 & 0.171 & 0.206 & 12/12 \\
+sub-08 & 0.187 & 0.283 & 0.385 & 12/12 \\
+sub-09 & 0.291 & 0.321 & 0.361 & 12/12 \\
+sub-10 & $-$0.010 & 0.084 & 0.159 & 11/12 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{S3. Bootstrap intervals and channel counts}
+
+The ten participant values were resampled with replacement 10\,000 times with the same resamples for every statistic (NumPy \texttt{default\_rng(2026)}); intervals are the 2.5th and 97.5th percentiles. These intervals describe the variation between participants, not between runs. The intervals of each decoder minus the template and of the residual PCC are in main Table~III; Table~\ref{tab:s_boot} gives those of the means and Table~\ref{tab:s_bootd} those of the MR-CNN-BiLSTM minus each comparator.
+
+\begin{table}[H]\centering\small
+\caption{Level~1, mean over participants with 95\% bootstrap interval.}\label{tab:s_boot}
+\begin{tabular}{lccc}
+\toprule
+System & PCC & In-speech PCC & Residual PCC \\
+\midrule
+MR-CNN-BiLSTM & \NBHybPcc{} [\NBHybPccCiLo, \NBHybPccCiHi] & \NBHybIns{} [\NBHybInsCiLo, \NBHybInsCiHi] & \NBHybRes{} [\NBHybResCiLo, \NBHybResCiHi] \\
+CNN-BiLSTM & \NBBasPcc{} [\NBBasPccCiLo, \NBBasPccCiHi] & \NBBasIns{} [\NBBasInsCiLo, \NBBasInsCiHi] & \NBBasRes{} [\NBBasResCiLo, \NBBasResCiHi] \\
+Linear & \NBLinPcc{} [\NBLinPccCiLo, \NBLinPccCiHi] & \NBLinIns{} [\NBLinInsCiLo, \NBLinInsCiHi] & \NBLinRes{} [\NBLinResCiLo, \NBLinResCiHi] \\
+NeuroIncept & \NBNeuPcc{} [\NBNeuPccCiLo, \NBNeuPccCiHi] & \NBNeuIns{} [\NBNeuInsCiLo, \NBNeuInsCiHi] & \NBNeuRes{} [\NBNeuResCiLo, \NBNeuResCiHi] \\
+ConvED-SR & \NBConPcc{} [\NBConPccCiLo, \NBConPccCiHi] & \NBConIns{} [\NBConInsCiLo, \NBConInsCiHi] & \NBConRes{} [\NBConResCiLo, \NBConResCiHi] \\
+Template & \NBTemPcc{} [\NBTemPccCiLo, \NBTemPccCiHi] & \NBTemIns{} [\NBTemInsCiLo, \NBTemInsCiHi] & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Level~1, MR-CNN-BiLSTM minus each comparator: difference of means with 95\% bootstrap interval.}\label{tab:s_bootd}
+\begin{tabular}{lccc}
+\toprule
+Difference & PCC & In-speech PCC & Residual PCC \\
+\midrule
+MR-CNN-BiLSTM $-$ CNN-BiLSTM & \NBHBasPccD{} [\NBHBasPccLo, \NBHBasPccHi] & \NBHBasInsD{} [\NBHBasInsLo, \NBHBasInsHi] & \NBHBasResD{} [\NBHBasResLo, \NBHBasResHi] \\
+MR-CNN-BiLSTM $-$ Linear & \NBHLinPccD{} [\NBHLinPccLo, \NBHLinPccHi] & \NBHLinInsD{} [\NBHLinInsLo, \NBHLinInsHi] & \NBHLinResD{} [\NBHLinResLo, \NBHLinResHi] \\
+MR-CNN-BiLSTM $-$ NeuroIncept & \NBHNeuPccD{} [\NBHNeuPccLo, \NBHNeuPccHi] & \NBHNeuInsD{} [\NBHNeuInsLo, \NBHNeuInsHi] & \NBHNeuResD{} [\NBHNeuResLo, \NBHNeuResHi] \\
+MR-CNN-BiLSTM $-$ ConvED-SR & \NBHConPccD{} [\NBHConPccLo, \NBHConPccHi] & \NBHConInsD{} [\NBHConInsLo, \NBHConInsHi] & \NBHConResD{} [\NBHConResLo, \NBHConResHi] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Participants differ in the number of electrodes. Table~\ref{tab:s_chan} gives the Spearman correlation between the number of channels and each participant's score ($n=10$).
+
+\begin{table}[H]\centering\small
+\caption{Spearman $\rho$ ($p$) between channel count and score.}\label{tab:s_chan}
+\begin{tabular}{lcc}
+\toprule
+System & PCC & In-speech PCC \\
+\midrule
+MR-CNN-BiLSTM & \NChHybPccRho{} (\NChHybPccP) & \NChHybInsRho{} (\NChHybInsP) \\
+CNN-BiLSTM & \NChBasPccRho{} (\NChBasPccP) & \NChBasInsRho{} (\NChBasInsP) \\
+Linear & \NChLinPccRho{} (\NChLinPccP) & \NChLinInsRho{} (\NChLinInsP) \\
+NeuroIncept & \NChNeuPccRho{} (\NChNeuPccP) & \NChNeuInsRho{} (\NChNeuInsP) \\
+ConvED-SR & \NChConPccRho{} (\NChConPccP) & \NChConInsRho{} (\NChConInsP) \\
+Template & \NChTemPccRho{} (\NChTemPccP) & \NChTemInsRho{} (\NChTemInsP) \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{0.95\linewidth}{\footnotesize No correlation is significant at the 0.05 level.}
+\end{table}
+
+\section*{S4. Reproducibility}
+
+Training was run on CPU and is not bit-reproducible: rerunning a fold with the same seed and settings changed the PCC (for example sub-02, fold 4: 0.601 and 0.577); the three seeds of every network describe this run-to-run variation (Section~S1). All scripts that produced the numbers of the paper and of this supplement are in the code repository: \texttt{stageB\_subject.py} and \texttt{stageB\_extra\_seeds\_savepreds.py} (all decoders, seeds 42 and 123/456), \texttt{stageB\_convedsr\_1024\_full.py} (ConvED-SR with 1024~Hz input, S5), \texttt{supp\_template\_sensitivity.py} and \texttt{shift\_scan\_all.py} (S2), \texttt{quality\_metrics.py} (S8, S12), \texttt{inword\_stageB.py}, which writes the word-level file \texttt{inword\_stageB\_long.csv}, \texttt{speech\_per\_word.py} (S10), and \texttt{code/analysis/make\_numbers\_v12.py}, which computes every statistic, interval and macro of the paper and of this supplement from the result files. The result file of every run is released with the code, so every statistic can be recomputed without retraining.
+
+\section*{S5. ConvED-SR input resolution}
+
+The original ConvED-SR code takes the sEEG at 1024~Hz. In the main runs ConvED-SR receives the HG envelope at 1024~Hz (same filtering as the HG features of the other systems, without the 50~ms averaging and without down-sampling; 475 samples per 40-frame segment, last encoder kernel $(2,2)$). As a complete comparison, ConvED-SR was also trained on all participants, folds and seeds with the HG frames that the other systems receive (one per mel frame, last encoder kernel $(2,1)$). With HG frames it reaches a PCC of \NCHgPcc{}, an in-speech PCC of \NCHgIns{} and a residual PCC of \NCHgRes{} (\NCHgLow{} of 300 folds below 0.3); with the 1024~Hz input it reaches \NBConPcc{}, \NBConIns{} and \NBConRes{} (main Table~II). The 1024~Hz input is higher in \NCKvsHgPccWin{} of 10 participants in PCC (exact Wilcoxon $p=\NCKvsHgPccP$) and in \NCKvsHgInsWin{} of 10 in in-speech PCC ($p=\NCKvsHgInsP$).
+
+\section*{S6. Comparators: details and deviations}
+
+\textbf{Linear.} The linear decoder follows the dataset authors: nine context frames (offsets $-20$ to $+20$ frames in steps of 5, that is up to 0.23~s on each side), z-scoring, PCA to 50 components fitted on the training blocks and least squares to the 80 mel bins.
+
+\textbf{NeuroIncept} (4.67~M parameters) is our re-implementation based on the authors' public code (Keras), written in PyTorch. \emph{Kept:} a per-frame decoder; input of nine context frames at offsets $-20$ to $+20$ frames in steps of 5, of all channels; Inception module (1$\times$1, 3, 5 and max-pool with 1$\times$1; 64 filters), GRU layers of 128, 256 and 512 units (last state), a second Inception module (128), dense layers of 1024-1024-512-256-128 units and a linear output; mean-squared error; the learning rate of $10^{-4}$. \emph{Changed:} (1) 80 mel bins instead of 128; (2) a standard tanh GRU (the original Keras layer uses ReLU); (3) channels zero-padded to 127 with a mask; (4) context frames beyond the edge of a window are replicated; (5) in each optimization step a window contributes 32 randomly chosen frames (all frames at test time), to keep CPU training feasible; the original used batch size 128.
+
+\textbf{ConvED-SR} (\NXParamsConvedsr{}~M parameters) is our re-implementation based on the authors' public code, written independently in PyTorch. \emph{Kept:} a 1024~Hz neural input; a Conv1d stem (stride 2), seven residual 2-D down blocks, a latent of 256, a transposed convolution and four residual up blocks with CBAM attention, four multi-scale outputs ($5\times10$, $10\times20$, $20\times40$, $40\times80$), deep supervision with the sum of the four mean-squared errors (targets halved by nearest-neighbor interpolation), hidden size 256, one 40-frame window (464~ms) mapped to 40 mel frames, and the learning rate of $5\times10^{-4}$. \emph{Changed:} (1) the 1024~Hz input is the HG envelope (Section~S5) and each 40-frame segment receives only its own 464~ms of neural input, without the extra neural context of about 0.576 windows (about 267~ms) on each side used in the original code, so the last encoder kernel is $(2,2)$ instead of $(2,4)$; (2) every 256-frame window is processed as seven segments of 40 frames (starts 0, 40, \dots, 200 and 216, the last one aligned to the end of the window); (3) channels are zero-padded to 127 with a mask; (4) the optimiser and schedule are the shared ones (the original code uses AdamW with weight decay 0.01, a MultiStepLR schedule with milestones at epochs 20, 40 and 60 and $\gamma=0.5$, and batch size 256).
+
+Parameter counts: CNN-BiLSTM 1.96~M, MR-CNN-BiLSTM 7.10~M, NeuroIncept 4.67~M, ConvED-SR \NXParamsConvedsr{}~M (trainable parameters, including a 320-parameter participant-embedding table of which only one row is used per model). A participant embedding (a one-hot participant indicator for Linear) is concatenated as shown in Fig.~\ref{fig:s_models}; within a per-participant model it is constant. Every model is trained from scratch for each participant, fold and seed, with all layers trainable; the only weights loaded are those of the best epoch within the same run (early stopping). The published values of NeuroIncept and ConvED-SR come from other protocols (Table~\ref{tab:s_prior}).
+
+\section*{S7. Architectures}
+
+Figure~\ref{fig:s_models} shows the five systems.
+
+\begin{figure*}[t]\centering\includegraphics[width=0.85\textwidth]{figs/fig_model_structures.pdf}
+\caption{Systems compared. (a) MR-CNN-BiLSTM network; the CNN-BiLSTM is the same network without the dashed MR-ResBlocks and with one linear $512\to80$ head. (b) MR-ResBlock. (c) NeuroIncept and (d) ConvED-SR re-implementations. (e) Linear decoder. Input and output of (a) are both 86 frames/s.}\label{fig:s_models}\end{figure*}
+
+\section*{S8. Audio metrics: constant-spectrum checks and MCD}
+
+\textbf{Constant-spectrum control.} The control is the mean log-mel spectrogram of all non-test frames of the participant, repeated over the test frames, vocoded with HiFi-GAN and scored against the original audio. Its STOI~[S1] is \NBStoiCst{} (fold 1), mean over the ten participants. It was also scored (i) against a reference shifted by 10~s (0.501), (ii) against the speech of another participant (0.505), and (iii) after lowering or raising its level by 1.15 natural-log units (0.503 and 0.502). The value does not depend on the reference or on the level; it is the score that STOI, with this vocoder, gives to a signal without temporal content (the vocoder itself was not varied). It is above the mean STOI of every system (Table~\ref{tab:s_audio}; $p=\NBHybStoiVsCstP$ for the MR-CNN-BiLSTM). Why STOI gives this score to a spectrum without temporal content, and a lower one to the template, is not established here; STOI is therefore reported for completeness and is not used to rank the decoders.
+
+\textbf{Mel-cepstral distortion (MCD)~[S2].} The cepstra $c_{n,k}$ ($k=1,\dots,24$) are the coefficients of an orthonormal DCT-II of the log-mel spectrogram $y_{n,b}$ over the 80 mel bins, and $\hat c_{n,k}$ are those of the prediction $p_{n,b}$; then
+\begin{equation}\mathrm{MCD}=\frac{1}{|\mathcal{N}|}\sum_{n\in\mathcal{N}}\frac{10}{\ln 10}\sqrt{2\sum_{k=1}^{24}\big(c_{n,k}-\hat c_{n,k}\big)^2}\ \ \mathrm{dB},\label{eq:s_mcd}\end{equation}
+with the energy term $c_0$ excluded. It is computed on all test frames of the ten folds (seed 42). Its absolute values are not comparable with MCD values of other studies, which use other analyses, but are comparable across our systems (Table~\ref{tab:s_mcd}).
+
+\begin{table}[H]\centering\small
+\caption{MCD (dB, lower is better), mean over participants, seed 42.}\label{tab:s_mcd}
+\begin{tabular}{lr}
+\toprule
+System & MCD \\
+\midrule
+Template & \NBMcdTem \\
+Linear & \NBMcdLin \\
+CNN-BiLSTM & \NBMcdBas \\
+MR-CNN-BiLSTM & \NBMcdHyb \\
+NeuroIncept & \NBMcdNeu \\
+ConvED-SR & \NBMcdCon \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{S9. CNN-BiLSTM versus MR-CNN-BiLSTM}
+
+The MR-CNN-BiLSTM has 7.10~M parameters and the CNN-BiLSTM 1.96~M (Section~S6). Table~\ref{tab:s_abl} gives the paired comparison of the two networks at level~1; level~2 is in main Table~V.
+
+\begin{table}[H]\centering\small
+\caption{Level~1, MR-CNN-BiLSTM versus the CNN-BiLSTM, participant values averaged over the three seeds. $\Delta$ is MR-CNN-BiLSTM minus CNN-BiLSTM; $n$ is the number of participants with a higher MR-CNN-BiLSTM value; $p$ is the uncorrected exact Wilcoxon $p$.}\label{tab:s_abl}
+\begin{tabular}{lcccccc}
+\toprule
+Metric & CNN-BiLSTM & MR-CNN-BiLSTM & $\Delta$ & $n$ & $p$ \\
+\midrule
+PCC & \NBBasPcc & \NBHybPcc & \NBHBasPccD & \NBHBasPccWin/10 & \NBHBasPccP \\
+In-speech PCC & \NBBasIns & \NBHybIns & \NBHBasInsD & \NBHBasInsWin/10 & \NBHBasInsP \\
+Residual PCC & \NBBasRes & \NBHybRes & \NBHBasResD & \NBHBasResWin/10 & \NBHBasResP \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{S10. Participants}
+
+Table~\ref{tab:s_data} gives the channels, duration, trials and speech content of each participant.
+
+\begin{table}[H]\centering\small
+\caption{Participants. Speech is the mean duration of speech frames per word trial (from one prompt onset to the next) and the share of speech frames in the recording. Duration is the span covered by the feature frames; the source recording of participant 10 lasts 285.1~s.}\label{tab:s_data}
+\begin{tabular}{lrrrrr}
+\toprule
+Participant & Channels & Duration (s) & Trials & Speech (s/word) & Speech (\%) \\
+\midrule
+sub-01 & 127 & 300.3 & 100 & 0.654 & 21.8 \\
+sub-02 & 127 & 300.3 & 100 & 0.662 & 22.0 \\
+sub-03 & 127 & 300.3 & 100 & 0.700 & 23.3 \\
+sub-04 & 115 & 300.3 & 100 & 0.726 & 24.2 \\
+sub-05 & 60 & 300.3 & 100 & 0.757 & 25.2 \\
+sub-06 & 127 & 300.4 & 100 & 0.585 & 19.5 \\
+sub-07 & 127 & 300.3 & 100 & 0.505 & 16.8 \\
+sub-08 & 54 & 300.3 & 100 & 0.609 & 20.3 \\
+sub-09 & 117 & 300.4 & 100 & 0.566 & 18.9 \\
+sub-10 & 122 & 285.0 & 95 & 0.426 & 14.2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{S11. Additional figures}
+
+Figure~\ref{fig:s_matrix} shows the results of every system per participant, and Fig.~\ref{fig:s_recon} an example reconstruction with its vocoded audio.
+
+\begin{figure}[H]\centering\includegraphics[width=0.85\textwidth]{figs/fig_eval_matrix.pdf}
+\caption{Per participant and system: PCC, in-speech PCC and residual PCC over the ten folds and three seeds (box plots with individual folds). The dashed line is the template of each participant. Folds with PCC below 0.3 are not drawn in the box and are marked in red with their count.}\label{fig:s_matrix}\end{figure}
+
+\begin{figure}[H]\centering\includegraphics[width=0.85\textwidth]{figs/fig_recon_perparticipant.pdf}
+\caption{Example reconstruction: participant 6, test block 3 (the test block shown in Fig.~1 of the main text), MR-CNN-BiLSTM, seed 42. Left, log-mel spectrogram; right, waveform after HiFi-GAN (peak-normalized). Top, original; bottom, reconstruction. The reconstruction follows when each word is spoken and its average spectral shape, but not the finer spectral structure inside speech.}\label{fig:s_recon}\end{figure}
+
+\section*{S12. Audio metrics per system}
+
+Table~\ref{tab:s_audio} gives the STOI~[S1] of every system. A constant spectrum reaches a higher STOI than every system, including the template (Section~S8). For this reason, decoders are ranked with the in-speech PCC rather than with STOI.
+
+\begin{table}[H]
+\caption{STOI of the HiFi-GAN output (mean over 10 participants; fold 1, seed 42). The constant spectrum is the mean log-mel of the non-test frames of the participant, evaluated on the same test frames.}
+\label{tab:s_audio}
+\centering\small
+\begin{tabular}{@{}lc@{}}
+\toprule
+System & STOI \\
+\midrule
+HiFi-GAN of true mel (ceiling) & \NBStoiTru \\
+\midrule
+Template (no neural input) & \NBStoiTem \\
+Linear & \NBStoiLin \\
+CNN-BiLSTM & \NBStoiBas \\
+MR-CNN-BiLSTM & \NBStoiHyb \\
+NeuroIncept (re-impl.) & \NBStoiNeu \\
+ConvED-SR (re-impl.) & \NBStoiCon \\
+Constant spectrum (control) & \NBStoiCst \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{S13. Level 2: computational details}
+
+These rules complete Section~II-F of the main text.
+\begin{enumerate}
+\item \textbf{Frames.} Mel frame $n$ is centered at $t_n=256\,n/22050$~s. Only scored test frames enter (main text, Section~II-B). Each scored frame has exactly one prediction per system and seed.
+\item \textbf{Speech mask.} $\mathcal{N}_\mathrm{sp}$ is Eq.~(2) of the main text: the mean over the 80 bins of the natural-log mel of the original audio, thresholded at the Otsu threshold $\theta$ of the participant's whole recording, computed once per participant and used for every system, fold and seed. $\theta$ is computed by our own implementation of Otsu's method (\texttt{speech\_mask} in \texttt{template\_floor\_continuous.py}): a 128-bin histogram of the mean log-mel, with $\theta$ at the bin center that maximizes the between-class variance; speech frames are those above $\theta$.
+\item \textbf{Words.} Word $w$ has the onset $o_w$ of its prompt in the dataset's stimulus timing (the onsets used by the template). Its speech frames $\mathcal{N}_\mathrm{sp}(w)$ are the frames of $\mathcal{N}_\mathrm{sp}$ with $o_w\le t_n<o_{w+1}$, where $o_{w+1}$ is the next prompt onset (the end of the recording for the last word). A word is kept if all its speech frames lie inside one test fold (\NWWordsFold{} of \NXTotalTrials{} words) and if it has at least 20 speech frames (\NWWordsShort{} more words excluded; \NWWords{} kept). The same words enter for every system.
+\item \textbf{Template.} The template of a word is that of the fold whose test block contains it, estimated on that fold's training blocks.
+\item \textbf{Metric.} Eq.~(1) of the main text with $\mathcal{N}=\mathcal{N}_\mathrm{sp}(w)$. A bin with zero variance over the frames of the word, in the original or in the prediction, is left out of that system's mean.
+\item \textbf{Participant values.} The arithmetic mean over the kept words of a participant (all ten folds), each word with equal weight, computed for each seed and then averaged over the three seeds.
+\item \textbf{Paired test.} For comparator $X$, $d_s=v_s(\text{MR-CNN-BiLSTM})-v_s(X)$ for participants $s=1,\dots,10$. The exact two-sided Wilcoxon signed-rank $p$ is obtained by enumerating the $2^{10}$ sign assignments (mid-ranks for ties; zero differences dropped and reported). The mean difference and the number of participants with $d_s>0$ are reported.
+\item \textbf{Holm.} Over the four comparisons of the decoder with the highest mean with the other four decoders. The adjusted value is $\max_{j\le i}\min\{1,(k-j+1)\,p_{(j)}\}$ for $k$ comparisons ordered by $p$. The check over all ten pairs of decoders uses the same rule with $k=10$.
+\item \textbf{Seeds.} The main result uses the participant values averaged over the three seeds; each seed is analyzed separately in Section~S15.
+\end{enumerate}
+
+\section*{S14. Level 2: words and per-participant values}
+
+Of the \NXTotalTrials{} words, \NWWordsFold{} have all their speech frames inside one test fold, and \NWWords{} of these have at least 20 speech frames. The endpoint per participant is shown in Fig.~3 of the main text.
+
+\section*{S15. Level 2: each seed}
+
+Table~\ref{tab:s_l2rob} repeats the level-2 comparison for each seed separately and gives the main result (participant values averaged over the three seeds); Linear and the template are deterministic. With each seed, the MR-CNN-BiLSTM again has the highest mean and is above each of the other four decoders in at least \NWSeedMinWin{} of 10 participants, with $p_\mathrm{H}\le\NWSeedMaxHolm$.
+
+\begin{table}[H]
+\caption{Level 2, each seed. $\Delta$, MR-CNN-BiLSTM minus the decoder; $n$, participants in which the MR-CNN-BiLSTM is higher; $p_\mathrm{H}$, Holm over the comparisons of each row.}
+\label{tab:s_l2rob}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccc}
+\toprule
+ & \multicolumn{2}{c}{CNN-BiLSTM} & \multicolumn{2}{c}{Linear} & \multicolumn{2}{c}{NeuroIncept} & \multicolumn{2}{c}{ConvED-SR} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Seed & $\Delta$ ($n$) & $p_\mathrm{H}$ & $\Delta$ ($n$) & $p_\mathrm{H}$ & $\Delta$ ($n$) & $p_\mathrm{H}$ & $\Delta$ ($n$) & $p_\mathrm{H}$ \\
+\midrule
+42 & \NWHBasInsDSdA{} (\NWHBasInsWinSdA) & \NWHBasInsHolmSdA & \NWHLinInsDSdA{} (\NWHLinInsWinSdA) & \NWHLinInsHolmSdA & \NWHNeuInsDSdA{} (\NWHNeuInsWinSdA) & \NWHNeuInsHolmSdA & \NWHConInsDSdA{} (\NWHConInsWinSdA) & \NWHConInsHolmSdA \\
+123 & \NWHBasInsDSdB{} (\NWHBasInsWinSdB) & \NWHBasInsHolmSdB & \NWHLinInsDSdB{} (\NWHLinInsWinSdB) & \NWHLinInsHolmSdB & \NWHNeuInsDSdB{} (\NWHNeuInsWinSdB) & \NWHNeuInsHolmSdB & \NWHConInsDSdB{} (\NWHConInsWinSdB) & \NWHConInsHolmSdB \\
+456 & \NWHBasInsDSdC{} (\NWHBasInsWinSdC) & \NWHBasInsHolmSdC & \NWHLinInsDSdC{} (\NWHLinInsWinSdC) & \NWHLinInsHolmSdC & \NWHNeuInsDSdC{} (\NWHNeuInsWinSdC) & \NWHNeuInsHolmSdC & \NWHConInsDSdC{} (\NWHConInsWinSdC) & \NWHConInsHolmSdC \\
+Mean of 3 (main) & \NWHBasInsD{} (\NWHBasInsWin) & \NWHBasInsHolm & \NWHLinInsD{} (\NWHLinInsWin) & \NWHLinInsHolm & \NWHNeuInsD{} (\NWHNeuInsWin) & \NWHNeuInsHolm & \NWHConInsD{} (\NWHConInsWin) & \NWHConInsHolm \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\section*{S16. Earlier studies on the same dataset}
+
+Table~\ref{tab:s_prior} is the full version of Table~I of the main text (columns for mel bins, vocoder and reported metrics added).
+
+\begin{table}[H]
+\caption{Earlier studies on the same dataset, as described in their papers. ``Not stated'' means the text does not say; numbers in brackets are references of the main text; CV, cross-validation. The protocols differ in the ways listed in the columns, so the reported values are not directly comparable with each other or with ours.}
+\label{tab:s_prior}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{4.4cm}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{2.4cm}@{}}
+\hline
+Study & Mel bins, vocoder & Split and validation & Reported metrics & No-neural-input reference \\
+\hline
+Verwoert \emph{et al.}~[10] (linear) & 23, Griffin--Lim & Non-shuffled 10-fold CV; validation set not stated & PCC (values in a figure) & Random circular shift (chance level) \\
+Arthur and Csap\'o~[12] & 80, WaveGlow & Per-speaker 80/20 split; contiguity, validation not stated & MCD, subjective listening test; no PCC or STOI & Not stated \\
+Wu \emph{et al.}~[13] & 23 (Griffin--Lim) and 80 (WaveGlow) & Stratified 5-fold; 64/16/20 split for deep models; contiguity not stated & MSE, CC (in a figure); accuracy lower on speech only & Not stated \\
+NeuroIncept~[14] & 128, no vocoder & 80/20 train/validation, 10-fold CV mentioned; separate test set not stated & PCC \NXPubNeuPcc{}, STGI, MSE & Not stated \\
+ConvED-SR~[15] & 80, HiFi-GAN & Per-participant 10-fold CV, one test and nine training parts; no validation set described & PCC \NXPubConvedsrPcc{}, STOI \NXPubConvedsrStoi{}, MSE, MCD & Not stated \\
+MiSTR~[16] & Not stated, neural phase vocoder & 10-fold; 90/10 train/validation; contiguity, separate test fold not stated & PCC \NXPubMistrPcc{}, STOI \NXPubMistrStoi{}, MCD & Not stated \\
+\hline
+\textbf{This work} & 80, HiFi-GAN & Ten contiguous blocks; separate validation and test blocks; train-only norm. & PCC, in-speech and residual PCC, MSE, STOI~[S1], MCD~[S2]; word-level in-speech PCC & Template \\
+\hline
+\end{tabular}
+\end{table}
+
+\section*{Supplementary References}
+\noindent[S1] C.~H. Taal, R.~C. Hendriks, R.~Heusdens, and J.~Jensen, ``An algorithm for intelligibility prediction of time--frequency weighted noisy speech,'' \emph{IEEE Trans.\ Audio, Speech, Lang.\ Process.}, vol.~19, no.~7, pp.~2125--2136, Sep.~2011. doi: 10.1109/TASL.2011.2114881
+
+\noindent[S2] R.~Kubichek, ``Mel-cepstral distance measure for objective speech quality assessment,'' in \emph{Proc.\ IEEE Pacific Rim Conf.\ Commun., Comput.\ Signal Process.}, 1993, pp.~125--128.
+
+\end{document}
