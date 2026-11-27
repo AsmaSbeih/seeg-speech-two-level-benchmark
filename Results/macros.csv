@@ -1,0 +1,581 @@
+macro,value,source
+NBBasIns,0.268,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBBasInsCiHi,0.311,bootstrap mean 97.5%
+NBBasInsCiLo,0.224,bootstrap mean 2.5%
+NBBasLow,0,"participant-folds with PCC < 0.3, of 300 (all seeds)"
+NBBasLowSubjects,0,participants with at least one fold PCC < 0.3
+NBBasMin,0.442,"lowest fold PCC, all seeds"
+NBBasMse,1.73,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBBasNFolds,300,participant-folds over all seeds
+NBBasPcc,0.754,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBBasPccCiHi,0.800,bootstrap mean 97.5%
+NBBasPccCiLo,0.704,bootstrap mean 2.5%
+NBBasRes,0.476,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBBasResCiHi,0.555,bootstrap mean 97.5%
+NBBasResCiLo,0.397,bootstrap mean 2.5%
+NBBasResHi,0.555,bootstrap 97.5%
+NBBasResLo,0.397,bootstrap 2.5% residual PCC
+NBConIns,0.191,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBConInsCiHi,0.247,bootstrap mean 97.5%
+NBConInsCiLo,0.137,bootstrap mean 2.5%
+NBConLow,15,"participant-folds with PCC < 0.3, of 300 (all seeds)"
+NBConLowSubjects,3,participants with at least one fold PCC < 0.3
+NBConMin,0.003,"lowest fold PCC, all seeds"
+NBConMse,2.60,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBConNFolds,300,participant-folds over all seeds
+NBConPcc,0.603,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBConPccCiHi,0.693,bootstrap mean 97.5%
+NBConPccCiLo,0.507,bootstrap mean 2.5%
+NBConRes,0.307,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBConResCiHi,0.403,bootstrap mean 97.5%
+NBConResCiLo,0.213,bootstrap mean 2.5%
+NBConResHi,0.403,bootstrap 97.5%
+NBConResLo,0.213,bootstrap 2.5% residual PCC
+NBHBasInsD,+0.034,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHBasInsHi,+0.044,bootstrap
+NBHBasInsHolm,0.023,Holm over 12
+NBHBasInsHolmSdA,0.023,seed 42
+NBHBasInsHolmSdB,0.023,seed 123
+NBHBasInsHolmSdC,0.023,seed 456
+NBHBasInsLo,+0.022,bootstrap
+NBHBasInsP,0.004,exact Wilcoxon
+NBHBasInsWin,9,participants
+NBHBasNsMinHolmSeeds,0.551,"min Holm over seeds, MR vs CNN-BiLSTM in PCC and residual PCC"
+NBHBasPccD,-0.001,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHBasPccHi,+0.005,bootstrap
+NBHBasPccHolm,1.000,Holm over 12
+NBHBasPccHolmSdA,0.984,seed 42
+NBHBasPccHolmSdB,0.551,seed 123
+NBHBasPccHolmSdC,1.000,seed 456
+NBHBasPccLo,-0.007,bootstrap
+NBHBasPccP,0.770,exact Wilcoxon
+NBHBasPccWin,5,participants
+NBHBasResD,0.000,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHBasResHi,+0.009,bootstrap
+NBHBasResHolm,1.000,Holm over 12
+NBHBasResHolmSdA,0.984,seed 42
+NBHBasResHolmSdB,0.551,seed 123
+NBHBasResHolmSdC,0.984,seed 456
+NBHBasResLo,-0.008,bootstrap
+NBHBasResP,1.000,exact Wilcoxon
+NBHBasResWin,5,participants
+NBHConInsD,+0.110,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHConInsHi,+0.141,bootstrap
+NBHConInsHolm,0.023,Holm over 12
+NBHConInsHolmSdA,0.023,seed 42
+NBHConInsHolmSdB,0.023,seed 123
+NBHConInsHolmSdC,0.023,seed 456
+NBHConInsLo,+0.084,bootstrap
+NBHConInsP,0.002,exact Wilcoxon
+NBHConInsWin,10,participants
+NBHConPccD,+0.150,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHConPccHi,+0.211,bootstrap
+NBHConPccHolm,0.023,Holm over 12
+NBHConPccHolmSdA,0.023,seed 42
+NBHConPccHolmSdB,0.023,seed 123
+NBHConPccHolmSdC,0.023,seed 456
+NBHConPccLo,+0.099,bootstrap
+NBHConPccP,0.002,exact Wilcoxon
+NBHConPccWin,10,participants
+NBHConResD,+0.169,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHConResHi,+0.200,bootstrap
+NBHConResHolm,0.023,Holm over 12
+NBHConResHolmSdA,0.023,seed 42
+NBHConResHolmSdB,0.023,seed 123
+NBHConResHolmSdC,0.023,seed 456
+NBHConResLo,+0.141,bootstrap
+NBHConResP,0.002,exact Wilcoxon
+NBHConResWin,10,participants
+NBHLinInsD,+0.053,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHLinInsHi,+0.079,bootstrap
+NBHLinInsHolm,0.023,Holm over 12
+NBHLinInsHolmSdA,0.023,seed 42
+NBHLinInsHolmSdB,0.023,seed 123
+NBHLinInsHolmSdC,0.023,seed 456
+NBHLinInsLo,+0.030,bootstrap
+NBHLinInsP,0.004,exact Wilcoxon
+NBHLinInsWin,9,participants
+NBHLinPccD,+0.078,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHLinPccHi,+0.109,bootstrap
+NBHLinPccHolm,0.023,Holm over 12
+NBHLinPccHolmSdA,0.023,seed 42
+NBHLinPccHolmSdB,0.023,seed 123
+NBHLinPccHolmSdC,0.023,seed 456
+NBHLinPccLo,+0.052,bootstrap
+NBHLinPccP,0.002,exact Wilcoxon
+NBHLinPccWin,10,participants
+NBHLinResD,+0.125,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHLinResHi,+0.162,bootstrap
+NBHLinResHolm,0.023,Holm over 12
+NBHLinResHolmSdA,0.023,seed 42
+NBHLinResHolmSdB,0.023,seed 123
+NBHLinResHolmSdC,0.023,seed 456
+NBHLinResLo,+0.095,bootstrap
+NBHLinResP,0.002,exact Wilcoxon
+NBHLinResWin,10,participants
+NBHNeuInsD,+0.118,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHNeuInsHi,+0.177,bootstrap
+NBHNeuInsHolm,0.023,Holm over 12
+NBHNeuInsHolmSdA,0.023,seed 42
+NBHNeuInsHolmSdB,0.023,seed 123
+NBHNeuInsHolmSdC,0.023,seed 456
+NBHNeuInsLo,+0.066,bootstrap
+NBHNeuInsP,0.002,exact Wilcoxon
+NBHNeuInsWin,10,participants
+NBHNeuPccD,+0.213,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHNeuPccHi,+0.363,bootstrap
+NBHNeuPccHolm,0.023,Holm over 12
+NBHNeuPccHolmSdA,0.023,seed 42
+NBHNeuPccHolmSdB,0.023,seed 123
+NBHNeuPccHolmSdC,0.023,seed 456
+NBHNeuPccLo,+0.085,bootstrap
+NBHNeuPccP,0.002,exact Wilcoxon
+NBHNeuPccWin,10,participants
+NBHNeuResD,+0.153,"MR-CNN-BiLSTM minus comparator, seed-averaged"
+NBHNeuResHi,+0.253,bootstrap
+NBHNeuResHolm,0.023,Holm over 12
+NBHNeuResHolmSdA,0.023,seed 42
+NBHNeuResHolmSdB,0.023,seed 123
+NBHNeuResHolmSdC,0.023,seed 456
+NBHNeuResLo,+0.070,bootstrap
+NBHNeuResP,0.002,exact Wilcoxon
+NBHNeuResWin,10,participants
+NBHSigMaxHolmSeeds,0.023,max Holm over seeds of the comparisons that are significant in the seed mean
+NBHybIns,0.302,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBHybInsCiHi,0.349,bootstrap mean 97.5%
+NBHybInsCiLo,0.251,bootstrap mean 2.5%
+NBHybLow,0,"participant-folds with PCC < 0.3, of 300 (all seeds)"
+NBHybLowSubjects,0,participants with at least one fold PCC < 0.3
+NBHybMin,0.404,"lowest fold PCC, all seeds"
+NBHybMse,1.73,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBHybNFolds,300,participant-folds over all seeds
+NBHybPcc,0.753,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBHybPccCiHi,0.798,bootstrap mean 97.5%
+NBHybPccCiLo,0.706,bootstrap mean 2.5%
+NBHybRes,0.476,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBHybResCiHi,0.554,bootstrap mean 97.5%
+NBHybResCiLo,0.400,bootstrap mean 2.5%
+NBHybResHi,0.554,bootstrap 97.5%
+NBHybResLo,0.400,bootstrap 2.5% residual PCC
+NBHybStoiVsCstP,0.002,exact Wilcoxon MR-CNN-BiLSTM vs constant STOI
+NBHybStoiVsCstWin,0,participants MR > constant
+NBLinIns,0.248,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBLinInsCiHi,0.294,bootstrap mean 97.5%
+NBLinInsCiLo,0.202,bootstrap mean 2.5%
+NBLinLow,0,"participant-folds with PCC < 0.3, of 100 (all seeds)"
+NBLinLowSubjects,0,participants with at least one fold PCC < 0.3
+NBLinMin,0.395,"lowest fold PCC, all seeds"
+NBLinMse,2.18,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBLinNFolds,100,participant-folds over all seeds
+NBLinPcc,0.675,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBLinPccCiHi,0.739,bootstrap mean 97.5%
+NBLinPccCiLo,0.610,bootstrap mean 2.5%
+NBLinRes,0.351,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBLinResCiHi,0.446,bootstrap mean 97.5%
+NBLinResCiLo,0.258,bootstrap mean 2.5%
+NBLinResHi,0.446,bootstrap 97.5%
+NBLinResLo,0.258,bootstrap 2.5% residual PCC
+NBMcdBas,31.0,"MCD dB, seed 42, all test frames"
+NBMcdCon,33.9,"MCD dB, seed 42, all test frames"
+NBMcdHyb,31.0,"MCD dB, seed 42, all test frames"
+NBMcdLin,33.1,"MCD dB, seed 42, all test frames"
+NBMcdNeu,33.4,"MCD dB, seed 42, all test frames"
+NBMcdTem,31.1,"MCD dB, seed 42, all test frames"
+NBNeuIns,0.184,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBNeuInsCiHi,0.244,bootstrap mean 97.5%
+NBNeuInsCiLo,0.123,bootstrap mean 2.5%
+NBNeuLow,81,"participant-folds with PCC < 0.3, of 300 (all seeds)"
+NBNeuLowSubjects,6,participants with at least one fold PCC < 0.3
+NBNeuMin,-0.011,"lowest fold PCC, all seeds"
+NBNeuMse,2.54,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBNeuNFolds,300,participant-folds over all seeds
+NBNeuPcc,0.540,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBNeuPccCiHi,0.679,bootstrap mean 97.5%
+NBNeuPccCiLo,0.383,bootstrap mean 2.5%
+NBNeuRes,0.323,mean over participants of seed-averaged participant values (seeds 42/123/456; Linear deterministic)
+NBNeuResCiHi,0.435,bootstrap mean 97.5%
+NBNeuResCiLo,0.214,bootstrap mean 2.5%
+NBNeuResHi,0.435,bootstrap 97.5%
+NBNeuResLo,0.214,bootstrap 2.5% residual PCC
+NBResLoMin,0.213,lowest lower bound of the residual-PCC bootstrap intervals
+NBStoiBas,0.399,"STOI, fold 1, seed 42"
+NBStoiCon,0.329,"STOI, fold 1, seed 42"
+NBStoiCst,0.502,constant control STOI
+NBStoiHyb,0.383,"STOI, fold 1, seed 42"
+NBStoiLin,0.339,"STOI, fold 1, seed 42"
+NBStoiNeu,0.400,"STOI, fold 1, seed 42"
+NBStoiTem,0.324,"STOI, fold 1, seed 42"
+NBStoiTru,0.694,"STOI, fold 1, seed 42"
+NBTBasInsD,+0.054,decoder minus template
+NBTBasInsHi,+0.101,bootstrap 97.5%
+NBTBasInsHolm,1.000,Holm over 10 template comparisons
+NBTBasInsLo,+0.007,bootstrap 2.5%
+NBTBasInsP,0.131,exact Wilcoxon
+NBTBasInsWin,7,participants above template
+NBTBasPccD,+0.041,decoder minus template
+NBTBasPccHi,+0.103,bootstrap 97.5%
+NBTBasPccHolm,1.000,Holm over 10 template comparisons
+NBTBasPccLo,-0.023,bootstrap 2.5%
+NBTBasPccP,0.232,exact Wilcoxon
+NBTBasPccWin,6,participants above template
+NBTBelowMinHolm,0.580,"smallest Holm p, Linear/NeuroIncept/ConvED-SR vs template in PCC"
+NBTConInsD,-0.022,decoder minus template
+NBTConInsHi,+0.034,bootstrap 97.5%
+NBTConInsHolm,1.000,Holm over 10 template comparisons
+NBTConInsLo,-0.077,bootstrap 2.5%
+NBTConInsP,0.432,exact Wilcoxon
+NBTConInsWin,4,participants above template
+NBTConPccD,-0.111,decoder minus template
+NBTConPccHi,-0.009,bootstrap 97.5%
+NBTConPccHolm,1.000,Holm over 10 template comparisons
+NBTConPccLo,-0.219,bootstrap 2.5%
+NBTConPccP,0.131,exact Wilcoxon
+NBTConPccWin,4,participants above template
+NBTHybInsD,+0.088,decoder minus template
+NBTHybInsHi,+0.139,bootstrap 97.5%
+NBTHybInsHolm,0.273,Holm over 10 template comparisons
+NBTHybInsLo,+0.034,bootstrap 2.5%
+NBTHybInsP,0.027,exact Wilcoxon
+NBTHybInsWin,7,participants above template
+NBTHybPccD,+0.039,decoder minus template
+NBTHybPccHi,+0.100,bootstrap 97.5%
+NBTHybPccHolm,1.000,Holm over 10 template comparisons
+NBTHybPccLo,-0.021,bootstrap 2.5%
+NBTHybPccP,0.322,exact Wilcoxon
+NBTHybPccWin,6,participants above template
+NBTLinInsD,+0.035,decoder minus template
+NBTLinInsHi,+0.083,bootstrap 97.5%
+NBTLinInsHolm,1.000,Holm over 10 template comparisons
+NBTLinInsLo,-0.014,bootstrap 2.5%
+NBTLinInsP,0.322,exact Wilcoxon
+NBTLinInsWin,6,participants above template
+NBTLinPccD,-0.038,decoder minus template
+NBTLinPccHi,+0.037,bootstrap 97.5%
+NBTLinPccHolm,1.000,Holm over 10 template comparisons
+NBTLinPccLo,-0.116,bootstrap 2.5%
+NBTLinPccP,0.375,exact Wilcoxon
+NBTLinPccWin,4,participants above template
+NBTMinHolm,0.273,smallest Holm-adjusted p of the 10 template comparisons
+NBTNeuInsD,-0.030,decoder minus template
+NBTNeuInsHi,+0.032,bootstrap 97.5%
+NBTNeuInsHolm,1.000,Holm over 10 template comparisons
+NBTNeuInsLo,-0.089,bootstrap 2.5%
+NBTNeuInsP,0.557,exact Wilcoxon
+NBTNeuInsWin,3,participants above template
+NBTNeuPccD,-0.174,decoder minus template
+NBTNeuPccHi,-0.026,bootstrap 97.5%
+NBTNeuPccHolm,0.580,Holm over 10 template comparisons
+NBTNeuPccLo,-0.336,bootstrap 2.5%
+NBTNeuPccP,0.064,exact Wilcoxon
+NBTNeuPccWin,3,participants above template
+NBTemIns,0.214,template in speech
+NBTemInsCiHi,0.237,bootstrap
+NBTemInsCiLo,0.190,bootstrap
+NBTemPcc,0.714,"template, mean over participants"
+NBTemPccCiHi,0.757,bootstrap
+NBTemPccCiLo,0.665,bootstrap
+NBTemShareBas,95,100 x template PCC / best decoder PCC
+NCHgIns,0.165,"ConvED-SR with HG frames, seed mean"
+NCHgLow,34,"HG-frame ConvED-SR folds with PCC < 0.3, of 300"
+NCHgPcc,0.546,"ConvED-SR with HG frames, seed mean"
+NCHgRes,0.254,"ConvED-SR with HG frames, seed mean"
+NCKvsHgInsD,+0.027,1024 Hz minus HG frames
+NCKvsHgInsP,0.010,exact Wilcoxon
+NCKvsHgInsWin,9,participants
+NCKvsHgPccD,+0.057,1024 Hz minus HG frames
+NCKvsHgPccP,0.002,exact Wilcoxon
+NCKvsHgPccWin,10,participants
+NCKvsHgResD,+0.053,1024 Hz minus HG frames
+NCKvsHgResP,0.002,exact Wilcoxon
+NCKvsHgResWin,10,participants
+NChBasInsP,0.243,Spearman p
+NChBasInsRho,0.407,"Spearman rho, channels vs score"
+NChBasPccP,0.554,Spearman p
+NChBasPccRho,0.213,"Spearman rho, channels vs score"
+NChConInsP,0.259,Spearman p
+NChConInsRho,0.394,"Spearman rho, channels vs score"
+NChConPccP,0.554,Spearman p
+NChConPccRho,0.213,"Spearman rho, channels vs score"
+NChHybInsP,0.110,Spearman p
+NChHybInsRho,0.537,"Spearman rho, channels vs score"
+NChHybPccP,0.554,Spearman p
+NChHybPccRho,0.213,"Spearman rho, channels vs score"
+NChLinInsP,0.155,Spearman p
+NChLinInsRho,0.485,"Spearman rho, channels vs score"
+NChLinPccP,0.845,Spearman p
+NChLinPccRho,0.071,"Spearman rho, channels vs score"
+NChNeuInsP,0.817,Spearman p
+NChNeuInsRho,0.084,"Spearman rho, channels vs score"
+NChNeuPccP,0.929,Spearman p
+NChNeuPccRho,0.032,"Spearman rho, channels vs score"
+NChTemInsP,0.554,Spearman p
+NChTemInsRho,-0.213,"Spearman rho, channels vs score"
+NChTemPccP,0.227,Spearman p
+NChTemPccRho,-0.420,"Spearman rho, channels vs score"
+NRShiftMax,0.474,max
+NRShiftMean,0.248,"linear, shifted target, mean over 120 runs"
+NRShiftMin,-0.010,min
+NRShiftN,120,runs
+NRShiftPos,119,runs with PCC > 0
+NRTemInsCapA,0.212,"template in-speech, MAXPH 150"
+NRTemInsCapB,0.214,"template in-speech, MAXPH 600"
+NRTemInsCapM,0.214,"template in-speech, main (MAXPH 300, Otsu)"
+NRTemPccCapA,0.711,"template PCC, MAXPH 150"
+NRTemPccCapB,0.714,"template PCC, MAXPH 600"
+NRTemPccCapM,0.714,"template PCC, main (MAXPH 300, Otsu)"
+NSBasInsM,0.268,mean over seeds of the participant mean
+NSBasInsS,0.003,SD over seeds
+NSBasInsSdA,0.270,seed 42/123/456
+NSBasInsSdB,0.268,seed 42/123/456
+NSBasInsSdC,0.265,seed 42/123/456
+NSBasPccM,0.754,mean over seeds of the participant mean
+NSBasPccS,0.002,SD over seeds
+NSBasPccSdA,0.754,seed 42/123/456
+NSBasPccSdB,0.756,seed 42/123/456
+NSBasPccSdC,0.752,seed 42/123/456
+NSBasResM,0.476,mean over seeds of the participant mean
+NSBasResS,0.002,SD over seeds
+NSBasResSdA,0.475,seed 42/123/456
+NSBasResSdB,0.478,seed 42/123/456
+NSBasResSdC,0.474,seed 42/123/456
+NSConInsM,0.191,mean over seeds of the participant mean
+NSConInsS,0.014,SD over seeds
+NSConInsSdA,0.208,seed 42/123/456
+NSConInsSdB,0.184,seed 42/123/456
+NSConInsSdC,0.182,seed 42/123/456
+NSConPccM,0.603,mean over seeds of the participant mean
+NSConPccS,0.020,SD over seeds
+NSConPccSdA,0.626,seed 42/123/456
+NSConPccSdB,0.595,seed 42/123/456
+NSConPccSdC,0.587,seed 42/123/456
+NSConResM,0.307,mean over seeds of the participant mean
+NSConResS,0.015,SD over seeds
+NSConResSdA,0.322,seed 42/123/456
+NSConResSdB,0.291,seed 42/123/456
+NSConResSdC,0.307,seed 42/123/456
+NSHybInsM,0.302,mean over seeds of the participant mean
+NSHybInsS,0.004,SD over seeds
+NSHybInsSdA,0.300,seed 42/123/456
+NSHybInsSdB,0.306,seed 42/123/456
+NSHybInsSdC,0.299,seed 42/123/456
+NSHybPccM,0.753,mean over seeds of the participant mean
+NSHybPccS,0.002,SD over seeds
+NSHybPccSdA,0.752,seed 42/123/456
+NSHybPccSdB,0.752,seed 42/123/456
+NSHybPccSdC,0.755,seed 42/123/456
+NSHybResM,0.476,mean over seeds of the participant mean
+NSHybResS,0.003,SD over seeds
+NSHybResSdA,0.477,seed 42/123/456
+NSHybResSdB,0.473,seed 42/123/456
+NSHybResSdC,0.478,seed 42/123/456
+NSNeuInsM,0.184,mean over seeds of the participant mean
+NSNeuInsS,0.008,SD over seeds
+NSNeuInsSdA,0.191,seed 42/123/456
+NSNeuInsSdB,0.175,seed 42/123/456
+NSNeuInsSdC,0.185,seed 42/123/456
+NSNeuPccM,0.540,mean over seeds of the participant mean
+NSNeuPccS,0.014,SD over seeds
+NSNeuPccSdA,0.556,seed 42/123/456
+NSNeuPccSdB,0.533,seed 42/123/456
+NSNeuPccSdC,0.531,seed 42/123/456
+NSNeuResM,0.323,mean over seeds of the participant mean
+NSNeuResS,0.015,SD over seeds
+NSNeuResSdA,0.340,seed 42/123/456
+NSNeuResSdB,0.311,seed 42/123/456
+NSNeuResSdC,0.318,seed 42/123/456
+NSensABas,0.270,"in-speech PCC, main (MAXPH 300, Otsu), seed 42"
+NSensACon,0.208,"in-speech PCC, main (MAXPH 300, Otsu), seed 42"
+NSensAFrac,0.208,speech fraction
+NSensAHyb,0.300,"in-speech PCC, main (MAXPH 300, Otsu), seed 42"
+NSensALin,0.248,"in-speech PCC, main (MAXPH 300, Otsu), seed 42"
+NSensANeu,0.191,"in-speech PCC, main (MAXPH 300, Otsu), seed 42"
+NSensATem,0.214,"template in-speech, main (MAXPH 300, Otsu)"
+NSensBBas,0.270,"in-speech PCC, MAXPH 150, seed 42"
+NSensBCon,0.208,"in-speech PCC, MAXPH 150, seed 42"
+NSensBFrac,0.208,speech fraction
+NSensBHyb,0.300,"in-speech PCC, MAXPH 150, seed 42"
+NSensBLin,0.248,"in-speech PCC, MAXPH 150, seed 42"
+NSensBNeu,0.191,"in-speech PCC, MAXPH 150, seed 42"
+NSensBTem,0.212,"template in-speech, MAXPH 150"
+NSensCBas,0.270,"in-speech PCC, MAXPH 600, seed 42"
+NSensCCon,0.208,"in-speech PCC, MAXPH 600, seed 42"
+NSensCFrac,0.208,speech fraction
+NSensCHyb,0.300,"in-speech PCC, MAXPH 600, seed 42"
+NSensCLin,0.248,"in-speech PCC, MAXPH 600, seed 42"
+NSensCNeu,0.191,"in-speech PCC, MAXPH 600, seed 42"
+NSensCTem,0.214,"template in-speech, MAXPH 600"
+NSensDBas,0.332,"in-speech PCC, Otsu - 0.25 SD, seed 42"
+NSensDCon,0.257,"in-speech PCC, Otsu - 0.25 SD, seed 42"
+NSensDFrac,0.228,speech fraction
+NSensDHyb,0.356,"in-speech PCC, Otsu - 0.25 SD, seed 42"
+NSensDLin,0.303,"in-speech PCC, Otsu - 0.25 SD, seed 42"
+NSensDNeu,0.240,"in-speech PCC, Otsu - 0.25 SD, seed 42"
+NSensDTem,0.264,"template in-speech, Otsu - 0.25 SD"
+NSensEBas,0.213,"in-speech PCC, Otsu + 0.25 SD, seed 42"
+NSensECon,0.165,"in-speech PCC, Otsu + 0.25 SD, seed 42"
+NSensEFrac,0.190,speech fraction
+NSensEHyb,0.250,"in-speech PCC, Otsu + 0.25 SD, seed 42"
+NSensELin,0.199,"in-speech PCC, Otsu + 0.25 SD, seed 42"
+NSensENeu,0.146,"in-speech PCC, Otsu + 0.25 SD, seed 42"
+NSensETem,0.172,"template in-speech, Otsu + 0.25 SD"
+NSensResMaxChange,0.003,max change of residual PCC across variants
+NWAllPairsMRMaxHolm,0.0195,max Holm (over all 10 pairwise decoder comparisons) of the four MR-CNN-BiLSTM comparisons
+NWBasInsMean,0.360,"word-level in-speech PCC, mean over participants"
+NWBasInsMeanSdA,0.362,"word-level in-speech PCC, mean over participants"
+NWBasInsMeanSdB,0.361,"word-level in-speech PCC, mean over participants"
+NWBasInsMeanSdC,0.355,"word-level in-speech PCC, mean over participants"
+NWBasSeedMinWin,8,min participants MR > CNN-BiLSTM over the single-seed analyses
+NWConInsMean,0.246,"word-level in-speech PCC, mean over participants"
+NWConInsMeanSdA,0.262,"word-level in-speech PCC, mean over participants"
+NWConInsMeanSdB,0.241,"word-level in-speech PCC, mean over participants"
+NWConInsMeanSdC,0.235,"word-level in-speech PCC, mean over participants"
+NWHBasInsD,+0.024,MR-CNN-BiLSTM minus CNN-BiLSTM
+NWHBasInsDSdA,+0.024,MR-CNN-BiLSTM minus CNN-BiLSTM
+NWHBasInsDSdB,+0.023,MR-CNN-BiLSTM minus CNN-BiLSTM
+NWHBasInsDSdC,+0.025,MR-CNN-BiLSTM minus CNN-BiLSTM
+NWHBasInsHi,+0.032,bootstrap
+NWHBasInsHiSdA,+0.036,bootstrap
+NWHBasInsHiSdB,+0.035,bootstrap
+NWHBasInsHiSdC,+0.035,bootstrap
+NWHBasInsHolm,0.0078,Holm over 4
+NWHBasInsHolmSdA,0.0078,Holm over 4
+NWHBasInsHolmSdB,0.0098,Holm over 4
+NWHBasInsHolmSdC,0.0078,Holm over 4
+NWHBasInsLo,+0.017,bootstrap
+NWHBasInsLoSdA,+0.014,bootstrap
+NWHBasInsLoSdB,+0.011,bootstrap
+NWHBasInsLoSdC,+0.016,bootstrap
+NWHBasInsP,0.0020,exact Wilcoxon
+NWHBasInsPSdA,0.0039,exact Wilcoxon
+NWHBasInsPSdB,0.0098,exact Wilcoxon
+NWHBasInsPSdC,0.0020,exact Wilcoxon
+NWHBasInsWin,10,participants
+NWHBasInsWinSdA,9,participants
+NWHBasInsWinSdB,8,participants
+NWHBasInsWinSdC,10,participants
+NWHConInsD,+0.138,MR-CNN-BiLSTM minus ConvED-SR
+NWHConInsDSdA,+0.125,MR-CNN-BiLSTM minus ConvED-SR
+NWHConInsDSdB,+0.143,MR-CNN-BiLSTM minus ConvED-SR
+NWHConInsDSdC,+0.145,MR-CNN-BiLSTM minus ConvED-SR
+NWHConInsHi,+0.169,bootstrap
+NWHConInsHiSdA,+0.159,bootstrap
+NWHConInsHiSdB,+0.178,bootstrap
+NWHConInsHiSdC,+0.179,bootstrap
+NWHConInsHolm,0.0078,Holm over 4
+NWHConInsHolmSdA,0.0078,Holm over 4
+NWHConInsHolmSdB,0.0078,Holm over 4
+NWHConInsHolmSdC,0.0078,Holm over 4
+NWHConInsLo,+0.112,bootstrap
+NWHConInsLoSdA,+0.096,bootstrap
+NWHConInsLoSdB,+0.114,bootstrap
+NWHConInsLoSdC,+0.117,bootstrap
+NWHConInsP,0.0020,exact Wilcoxon
+NWHConInsPSdA,0.0020,exact Wilcoxon
+NWHConInsPSdB,0.0020,exact Wilcoxon
+NWHConInsPSdC,0.0020,exact Wilcoxon
+NWHConInsWin,10,participants
+NWHConInsWinSdA,10,participants
+NWHConInsWinSdB,10,participants
+NWHConInsWinSdC,10,participants
+NWHInsMaxHolm,0.0078,max Holm
+NWHInsMaxHolmSdA,0.0078,max Holm
+NWHInsMaxHolmSdB,0.0098,max Holm
+NWHInsMaxHolmSdC,0.0078,max Holm
+NWHInsMinWin,10,min participants higher
+NWHInsMinWinSdA,9,min participants higher
+NWHInsMinWinSdB,8,min participants higher
+NWHInsMinWinSdC,10,min participants higher
+NWHLinInsD,+0.053,MR-CNN-BiLSTM minus Linear
+NWHLinInsDSdA,+0.056,MR-CNN-BiLSTM minus Linear
+NWHLinInsDSdB,+0.053,MR-CNN-BiLSTM minus Linear
+NWHLinInsDSdC,+0.050,MR-CNN-BiLSTM minus Linear
+NWHLinInsHi,+0.075,bootstrap
+NWHLinInsHiSdA,+0.081,bootstrap
+NWHLinInsHiSdB,+0.072,bootstrap
+NWHLinInsHiSdC,+0.075,bootstrap
+NWHLinInsHolm,0.0078,Holm over 4
+NWHLinInsHolmSdA,0.0078,Holm over 4
+NWHLinInsHolmSdB,0.0078,Holm over 4
+NWHLinInsHolmSdC,0.0078,Holm over 4
+NWHLinInsLo,+0.033,bootstrap
+NWHLinInsLoSdA,+0.034,bootstrap
+NWHLinInsLoSdB,+0.036,bootstrap
+NWHLinInsLoSdC,+0.027,bootstrap
+NWHLinInsP,0.0020,exact Wilcoxon
+NWHLinInsPSdA,0.0020,exact Wilcoxon
+NWHLinInsPSdB,0.0020,exact Wilcoxon
+NWHLinInsPSdC,0.0020,exact Wilcoxon
+NWHLinInsWin,10,participants
+NWHLinInsWinSdA,10,participants
+NWHLinInsWinSdB,10,participants
+NWHLinInsWinSdC,10,participants
+NWHNeuInsD,+0.139,MR-CNN-BiLSTM minus NeuroIncept
+NWHNeuInsDSdA,+0.133,MR-CNN-BiLSTM minus NeuroIncept
+NWHNeuInsDSdB,+0.146,MR-CNN-BiLSTM minus NeuroIncept
+NWHNeuInsDSdC,+0.139,MR-CNN-BiLSTM minus NeuroIncept
+NWHNeuInsHi,+0.207,bootstrap
+NWHNeuInsHiSdA,+0.207,bootstrap
+NWHNeuInsHiSdB,+0.226,bootstrap
+NWHNeuInsHiSdC,+0.207,bootstrap
+NWHNeuInsHolm,0.0078,Holm over 4
+NWHNeuInsHolmSdA,0.0078,Holm over 4
+NWHNeuInsHolmSdB,0.0078,Holm over 4
+NWHNeuInsHolmSdC,0.0078,Holm over 4
+NWHNeuInsLo,+0.081,bootstrap
+NWHNeuInsLoSdA,+0.067,bootstrap
+NWHNeuInsLoSdB,+0.074,bootstrap
+NWHNeuInsLoSdC,+0.082,bootstrap
+NWHNeuInsP,0.0020,exact Wilcoxon
+NWHNeuInsPSdA,0.0020,exact Wilcoxon
+NWHNeuInsPSdB,0.0020,exact Wilcoxon
+NWHNeuInsPSdC,0.0020,exact Wilcoxon
+NWHNeuInsWin,10,participants
+NWHNeuInsWinSdA,10,participants
+NWHNeuInsWinSdB,10,participants
+NWHNeuInsWinSdC,10,participants
+NWHOthDMax,+0.139,largest
+NWHOthDMaxSdA,+0.133,largest
+NWHOthDMaxSdB,+0.146,largest
+NWHOthDMaxSdC,+0.145,largest
+NWHOthDMin,+0.053,smallest MR-CNN-BiLSTM minus Linear/NeuroIncept/ConvED-SR
+NWHOthDMinSdA,+0.056,smallest MR-CNN-BiLSTM minus Linear/NeuroIncept/ConvED-SR
+NWHOthDMinSdB,+0.053,smallest MR-CNN-BiLSTM minus Linear/NeuroIncept/ConvED-SR
+NWHOthDMinSdC,+0.050,smallest MR-CNN-BiLSTM minus Linear/NeuroIncept/ConvED-SR
+NWHTemInsD,+0.096,descriptive
+NWHTemInsDSdA,+0.099,descriptive
+NWHTemInsDSdB,+0.096,descriptive
+NWHTemInsDSdC,+0.093,descriptive
+NWHTemInsWin,9,descriptive
+NWHTemInsWinSdA,9,descriptive
+NWHTemInsWinSdB,9,descriptive
+NWHTemInsWinSdC,8,descriptive
+NWHybInsMean,0.384,"word-level in-speech PCC, mean over participants"
+NWHybInsMeanSdA,0.387,"word-level in-speech PCC, mean over participants"
+NWHybInsMeanSdB,0.384,"word-level in-speech PCC, mean over participants"
+NWHybInsMeanSdC,0.381,"word-level in-speech PCC, mean over participants"
+NWLinInsMean,0.331,"word-level in-speech PCC, mean over participants"
+NWLinInsMeanSdA,0.331,"word-level in-speech PCC, mean over participants"
+NWLinInsMeanSdB,0.331,"word-level in-speech PCC, mean over participants"
+NWLinInsMeanSdC,0.331,"word-level in-speech PCC, mean over participants"
+NWNeuInsMean,0.244,"word-level in-speech PCC, mean over participants"
+NWNeuInsMeanSdA,0.254,"word-level in-speech PCC, mean over participants"
+NWNeuInsMeanSdB,0.238,"word-level in-speech PCC, mean over participants"
+NWNeuInsMeanSdC,0.242,"word-level in-speech PCC, mean over participants"
+NWOthInsMax,0.360,max of other decoders
+NWOthInsMaxSdA,0.362,max of other decoders
+NWOthInsMaxSdB,0.361,max of other decoders
+NWOthInsMaxSdC,0.355,max of other decoders
+NWOthInsMin,0.244,min of other decoders
+NWOthInsMinSdA,0.254,min of other decoders
+NWOthInsMinSdB,0.238,min of other decoders
+NWOthInsMinSdC,0.235,min of other decoders
+NWSeedMaxHolm,0.0098,max Holm over the three single-seed analyses
+NWSeedMinWin,8,min participants higher over the three single-seed analyses
+NWTemInsMean,0.288,"word-level in-speech PCC, mean over participants"
+NWTemInsMeanSdA,0.288,"word-level in-speech PCC, mean over participants"
+NWTemInsMeanSdB,0.288,"word-level in-speech PCC, mean over participants"
+NWTemInsMeanSdC,0.288,"word-level in-speech PCC, mean over participants"
+NWWords,984,words kept
+NWWordsFold,987,words with all speech frames inside one test fold
+NWWordsShort,3,excluded
+NXParamsConvedsr,0.98,"trainable parameters of ConvED-SR with 1024 Hz input (977,886)"
