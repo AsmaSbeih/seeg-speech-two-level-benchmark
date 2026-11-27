@@ -1,4 +1,0 @@
-model,gap,gap_s,n_pairs,mean_removed_windows,pcc_main,pcc_purged,pcc_diff_mean,pcc_diff_sd,pcc_diff_min,pcc_diff_max,pcc_in_speech_main,pcc_in_speech_purged,pcc_in_speech_diff_mean,pcc_in_speech_diff_sd,pcc_in_speech_diff_min,pcc_in_speech_diff_max,residual_pcc_main,residual_pcc_purged,residual_pcc_diff_mean,residual_pcc_diff_sd,residual_pcc_diff_min,residual_pcc_diff_max
-hybrid,0,0.0,30,0.0,0.755,0.75,-0.005,0.012,-0.034,0.014,0.307,0.313,0.006,0.023,-0.059,0.062,0.482,0.478,-0.004,0.03,-0.085,0.052
-hybrid,86,1.0,30,2.7,0.755,0.752,-0.004,0.018,-0.043,0.027,0.307,0.309,0.002,0.043,-0.101,0.089,0.482,0.481,-0.001,0.036,-0.106,0.068
-hybrid,256,2.97,30,7.2,0.755,0.754,-0.001,0.023,-0.063,0.06,0.307,0.309,0.003,0.032,-0.077,0.049,0.482,0.484,0.002,0.04,-0.09,0.108
